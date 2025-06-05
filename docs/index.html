@@ -1,12 +1,99 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>السراج المنير</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📚 السراج المنير</title>
+  <style>
+    body {
+      background: #f5f5dc;
+      font-family: 'Tahoma', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #2e3d49;
+      color: white;
+      padding: 20px;
+    }
+    nav {
+      margin: 20px;
+    }
+    nav button {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .book-shelf {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px;
+    }
+    .book {
+      width: 140px;
+      height: 200px;
+      background: linear-gradient(to bottom, #fff, #ddd);
+      margin: 10px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      padding: 10px;
+      text-align: center;
+    }
+    footer {
+      background: #eee;
+      padding: 10px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-  <h1>📚 مكتبة السراج المنير</h1>
-  <p>مرحبًا بك في رحلتك العلمية المباركة</p>
-  <p>صممها: حسين الصيمري</p>
+  <header>
+    <h1>📚 مكتبة السراج المنير</h1>
+    <p>رحلة علمية ممتعة بإشراف حسين الصيمري</p>
+  </header>
+
+  <nav>
+    <button onclick="alert('تم تغيير اللغة إلى العربية')">🇮🇶 العربية</button>
+    <button onclick="alert('تم تغيير اللغة إلى الفارسية')">🇮🇷 الفارسية</button>
+    <button onclick="alert('Switched to English')">English</button>
+  </nav>
+
+  <section>
+    <input type="text" placeholder="ابحث عن كلمة في الكتب..." style="padding:10px; width:80%;" />
+  </section>
+
+  <div class="book-shelf">
+    <div class="book">الفيزياء 📘</div>
+    <div class="book">الكيمياء 📗</div>
+    <div class="book">الفقه 📙</div>
+    <div class="book">العقيدة 📕</div>
+    <div class="book">الرياضيات 📓</div>
+  </div>
+
+  <footer>
+    <p>تصميم: حسين الصيمري</p>
+    <p>عدد الزوار: <span id="visitors">0</span></p>
+    <p>المسبحة: <span id="tasbeeh">0</span></p>
+    <button onclick="tasbeeh()">📿 تسبيح</button>
+  </footer>
+
+  <script>
+    let tasbeehCount = 0;
+    function tasbeeh() {
+      tasbeehCount++;
+      document.getElementById('tasbeeh').innerText = tasbeehCount;
+    }
+
+    // عدد الزوار (محاكاة محلية)
+    let visitors = localStorage.getItem('visitors') || 0;
+    visitors++;
+    localStorage.setItem('visitors', visitors);
+    document.getElementById('visitors').innerText = visitors;
+  </script>
 </body>
 </html>

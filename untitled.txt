@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>السراج المنير</title>
+  <style>
+    body { font-family: "Arial"; background-color: #fdfdfd; margin: 0; padding: 0; }
+    header { background-color: #1b1b2f; color: white; padding: 10px; text-align: center; }
+    nav { text-align: center; background: #eeeeee; padding: 10px; }
+    nav button { margin: 5px; padding: 8px; cursor: pointer; }
+    section { padding: 20px; }
+    .shelf { display: flex; flex-wrap: wrap; justify-content: center; }
+    .book { border: 1px solid #ccc; border-radius: 10px; margin: 10px; width: 150px; height: 200px; background: #fff; text-align: center; padding: 10px; box-shadow: 0 0 5px #999; }
+    .counter, .ai-box, .search-box { margin-top: 20px; text-align: center; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📚 السراج المنير</h1>
+  <p>رحلة علمية موفقة وممتعة — تصميم: حسين الصيمري</p>
+</header>
+
+<nav>
+  🌐 اللغة:
+  <select id="language" onchange="changeLanguage()">
+    <option value="ar">🇮🇶 العربية</option>
+    <option value="fa">🇮🇷 الفارسية</option>
+    <option value="en">English</option>
+  </select>
+</nav>
+
+<section class="search-box">
+  <h3>🔍 بحث شامل في كل الكتب</h3>
+  <input type="text" id="searchInput" placeholder="اكتب كلمة...">
+  <button onclick="searchBooks()">بحث</button>
+  <div id="searchResults"></div>
+</section>
+
+<section class="shelf" id="bookShelf">
+  <!-- هنا تضاف الكتب تلقائيًا -->
+</section>
+
+<section class="counter">
+  <h3>🧮 مسبحة إلكترونية</h3>
+  <p id="tasbeehCount">0</p>
+  <button onclick="incrementTasbeeh()">سبح</button>
+</section>
+
+<section class="ai-box">
+  <h3>🤖 مساعد الذكاء الاصطناعي</h3>
+  <textarea id="aiInput" rows="4" cols="40" placeholder="الصق فقرة هنا..."></textarea><br/>
+  <button onclick="suggestBooks()">اقتراح كتب</button>
+  <button onclick="summarize()">تلخيص</button>
+  <button onclick="generateQA()">سؤال وجواب</button>
+  <div id="aiResult"></div>
+</section>
+
+<section class="about">
+  <h3>ℹ️ عن الموقع</h3>
+  <p>مكتبة ذكية تجمع بين القراءة، البحث، الذكاء الاصطناعي، التسبيح، المسابقات، واللغات.</p>
+</section>
+
+<footer style="text-align:center; padding:20px; background:#eee;">
+  <p>عدد الزائرين: <span id="visitorCount">1</span></p>
+  <p>© السراج المنير - 2025</p>
+</footer>
+
+<script>
+  // البحث
+  function searchBooks() {
+    let q = document.getElementById('searchInput').value;
+    alert("جاري البحث عن: " + q);
+    // سيتم لاحقاً إضافة بحث فعلي في محتوى PDF أو الكتب المحملة
+  }
+
+  // المسبحة
+  let tasbeeh = 0;
+  function incrementTasbeeh() {
+    tasbeeh++;
+    document.getElementById("tasbeehCount").innerText = tasbeeh.toLocaleString();
+  }
+
+  // الذكاء الاصطناعي - مبسط
+  function suggestBooks() {
+    let text = document.getElementById("aiInput").value;
+    document.getElementById("aiResult").innerText = "📖 نقترح عليك قراءة كتاب عن: " + (text.includes("دين") ? "الفقه" : "العلوم");
+  }
+  function summarize() {
+    let text = document.getElementById("aiInput").value;
+    document.getElementById("aiResult").innerText = "📌 ملخص: " + text.slice(0, 30) + "...";
+  }
+  function generateQA() {
+    let text = document.getElementById("aiInput").value;
+    document.getElementById("aiResult").innerText = "❓ سؤال: ما الفكرة العامة للنص؟\n💡 الجواب: " + text.slice(0, 30) + "...";
+  }
+
+  // تغيير اللغة
+  function changeLanguage() {
+    const lang = document.getElementById('language').value;
+    alert("تغيير اللغة إلى: " + lang);
+  }
+
+  // زوار وهمي (بدون خادم)
+  let visits = localStorage.getItem('visits') || 1;
+  document.getElementById("visitorCount").innerText = visits;
+  localStorage.setItem('visits', parseInt(visits) + 1);
+</script>
+
+</body>
+</html>
